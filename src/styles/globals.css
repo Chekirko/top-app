@@ -1,7 +1,9 @@
 :root {
   --black: #3B434E;
+  --grey-light: #EBEBEB;
   --white: white;
   --accent: #7653FC;
+  --accent-hover: #2700c2;
   --red: #FC836D;
   --green: #1DC47E;
   --green-light: #C8F8E4;
@@ -54,15 +56,9 @@ body {
   background: #F5F6F8;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+/* body {
+ 
+} */
 
 a {
   color: inherit;
