@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Noto_Sans } from "next/font/google";
 import Htag from "@/components/Htag/Htag";
 import Button from "@/components/Button/Button";
+import Ptag from "@/components/Ptag/Ptag";
 // import { JsxElement } from 'typescript'
 
 const notosans = Noto_Sans({ weight: "300", subsets: ["latin"] });
@@ -26,6 +27,24 @@ export default function Home(): JSX.Element {
         <Button appearance="ghost" arrow="right">
           Stop
         </Button>
+        <Ptag size="s">
+          У нашому житті є багато речей, які можуть привести нас у пастку, і
+          яких ми не можемо уникнути, але Ісус прийшов на цю землю, щоб
+          звільнити нас від усього, навіть від смерті! Коли Ісус воскрес із
+          мертвих, Він переміг усе погане.
+        </Ptag>
+        <Ptag size="l">
+          У нашому житті є багато речей, які можуть привести нас у пастку, і
+          яких ми не можемо уникнути, але Ісус прийшов на цю землю, щоб
+          звільнити нас від усього, навіть від смерті! Коли Ісус воскрес із
+          мертвих, Він переміг усе погане.
+        </Ptag>
+        <Ptag>
+          У нашому житті є багато речей, які можуть привести нас у пастку, і
+          яких ми не можемо уникнути, але Ісус прийшов на цю землю, щоб
+          звільнити нас від усього, навіть від смерті! Коли Ісус воскрес із
+          мертвих, Він переміг усе погане.
+        </Ptag>
       </div>
     </>
   );
