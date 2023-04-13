@@ -1,5 +1,5 @@
 .button {
-    display: inline-block;
+    display: inline-block;    
 
     box-sizing: border-box;
     padding: 10px;
@@ -31,3 +31,19 @@
     color: var(--white);
     background-color: var(--accent);
 }
+
+.arrow {
+    display: inline-block;
+
+    margin-left: 10px;
+}
+
+.down {
+    transform: rotate(90deg);
+    transition: all 0.2s;
+}
+
+.primary svg, .ghost:hover svg {
+   fill: var(--white)
+}
+

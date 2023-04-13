@@ -2,19 +2,33 @@ import React from "react";
 import styles from "./Button.module.css";
 import { ButtonProps } from "./Button.props";
 import cn from "classnames";
+import ArrowIcon from "./arrow.svg";
 
 export default function Button({
-    appearance,
-    children,
+  appearance,
+  arrow = "none",
+  children,
+  className,
+  ...props
 }: ButtonProps): JSX.Element {
-    return (
-        <button
-            className={cn(styles.button, {
-                [styles.primary]: appearance === "primary",
-                [styles.ghost]: appearance === "ghost",
-            })}
+  return (
+    <button
+      className={cn(styles.button, {
+        [styles.primary]: appearance === "primary",
+        [styles.ghost]: appearance === "ghost",
+      })}
+      {...props}
+    >
+      {children}
+      {arrow !== "none" && (
+        <span
+          className={cn(styles.arrow, {
+            [styles.down]: arrow === "down",
+          })}
         >
-            {children}
-        </button>
-    );
+          <ArrowIcon />
+        </span>
+      )}
+    </button>
+  );
 }

@@ -20,8 +20,12 @@ export default function Home(): JSX.Element {
         <Htag tag="h1">Мій заголовок</Htag>
         <Htag tag="h3">Мій заголовок</Htag>
         <Htag tag="h2">Мій заголовок</Htag>
-        <Button appearance="primary">Go</Button>
-        <Button appearance="ghost">Stop</Button>
+        <Button appearance="primary" arrow="down">
+          Go
+        </Button>
+        <Button appearance="ghost" arrow="right">
+          Stop
+        </Button>
       </div>
     </>
   );
