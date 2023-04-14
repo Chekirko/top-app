@@ -7,10 +7,12 @@ import Ptag from "@/components/Ptag/Ptag";
 import Tag from "@/components/Tag/Tag";
 import Rating from "@/components/Rating/Rating";
 import { useState } from "react";
+import { withLayout } from "../../layout/Layout";
+// import Layout from "../../layout/Layout";
 
 const notosans = Noto_Sans({ weight: "300", subsets: ["latin"] });
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
   const [rating, setRaiting] = useState<number>(2);
   return (
     <>
@@ -80,7 +82,11 @@ export default function Home(): JSX.Element {
           Large grey
         </Tag>
         <Rating rating={rating} isEditable setRating={setRaiting} />
+        <Rating rating={5} isEditable />
+        <Rating rating={1} />
       </div>
     </>
   );
 }
+
+export default withLayout(Home);
