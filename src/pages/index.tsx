@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import { Noto_Sans } from "next/font/google";
 import Htag from "@/components/Htag/Htag";
@@ -8,11 +9,12 @@ import Tag from "@/components/Tag/Tag";
 import Rating from "@/components/Rating/Rating";
 import { useState } from "react";
 import { withLayout } from "../../layout/Layout";
-// import Layout from "../../layout/Layout";
+import { MenuItem } from "../../interfaces/menu.interface";
+import axios from "axios";
 
 const notosans = Noto_Sans({ weight: "300", subsets: ["latin"] });
 
-function Home(): JSX.Element {
+function Home({ menu, firstCategory }: HomeProps): JSX.Element {
   const [rating, setRaiting] = useState<number>(2);
   return (
     <>
@@ -23,6 +25,11 @@ function Home(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={notosans.className}>
+        <div>
+          {menu.map((item) => (
+            <div key={item._id.secondCategory}>{item._id.secondCategory}</div>
+          ))}
+        </div>
         <Htag tag="h1">Мій заголовок</Htag>
         <Htag tag="h3">Мій заголовок</Htag>
         <Htag tag="h2">Мій заголовок</Htag>
@@ -90,3 +97,22 @@ function Home(): JSX.Element {
 }
 
 export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const firstCategory = 0;
+  const { data: menu } = await axios.post<MenuItem[]>(
+    process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
+    { firstCategory }
+  );
+  return {
+    props: {
+      firstCategory,
+      menu,
+    },
+  };
+};
+
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[];
+  firstCategory: number;
+}

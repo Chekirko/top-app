@@ -12,11 +12,11 @@ export default function Footer({
   return (
     <footer {...props} className={cn(className, styles.footer)}>
       <div>OwlTop © 2020 - {format(new Date(), "yyyy")} Все права защищены</div>
-      <a href="#" target="_blank" className={styles.link}>
-        <Ptag size="m">Пользовательское соглашение</Ptag>
+      <a href="#" target="_blank">
+        Пользовательское соглашение
       </a>
-      <a href="#" target="_blank" className={styles.link}>
-        <Ptag size="m">Политика конфиденциальности</Ptag>
+      <a href="#" target="_blank">
+        Политика конфиденциальности
       </a>
     </footer>
   );
