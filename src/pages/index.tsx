@@ -25,11 +25,6 @@ function Home({ menu, firstCategory }: HomeProps): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={notosans.className}>
-        <div>
-          {menu.map((item) => (
-            <div key={item._id.secondCategory}>{item._id.secondCategory}</div>
-          ))}
-        </div>
         <Htag tag="h1">Мій заголовок</Htag>
         <Htag tag="h3">Мій заголовок</Htag>
         <Htag tag="h2">Мій заголовок</Htag>
@@ -91,6 +86,9 @@ function Home({ menu, firstCategory }: HomeProps): JSX.Element {
         <Rating rating={rating} isEditable setRating={setRaiting} />
         <Rating rating={5} isEditable />
         <Rating rating={1} />
+        {menu.map((item) => (
+          <div key={item._id.secondCategory}>{item._id.secondCategory}</div>
+        ))}
       </div>
     </>
   );
