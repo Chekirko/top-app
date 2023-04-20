@@ -86,6 +86,37 @@ function Home({ menu, firstCategory }: HomeProps): JSX.Element {
         <Rating rating={rating} isEditable setRating={setRaiting} />
         <Rating rating={5} isEditable />
         <Rating rating={1} />
+        <Tag size="m" color="red">
+          Large red
+        </Tag>
+        <Tag size="m" color="green">
+          Large green
+        </Tag>
+        <Tag size="m" color="ghost">
+          Large ghost
+        </Tag>
+        <Tag size="m" color="accent">
+          Large accent
+        </Tag>
+        <Tag size="m" color="grey">
+          Large grey
+        </Tag>
+        <h1>Привіт, Боженка!</h1>
+        <Tag size="m" color="red">
+          Large red
+        </Tag>
+        <Tag size="m" color="green">
+          Large green
+        </Tag>
+        <Tag size="m" color="ghost">
+          Large ghost
+        </Tag>
+        <Tag size="m" color="accent">
+          Large accent
+        </Tag>
+        <Tag size="m" color="grey">
+          Large grey
+        </Tag>
         {menu.map((item) => (
           <div key={item._id.secondCategory}>{item._id.secondCategory}</div>
         ))}
