@@ -63,7 +63,7 @@ export default function Menu(): JSX.Element {
 
   const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
     return (
-      <div>
+      <div className={styles.secondBlock}>
         {menu.map((m) => (
           <div key={m._id.secondCategory}>
             <div className={styles.secondLevel}>{m._id.secondCategory}</div>
@@ -85,7 +85,7 @@ export default function Menu(): JSX.Element {
       <a
         href={`/${route}${p.alias}`}
         key={p.alias}
-        className={cn(styles.thirdLevel, { [styles.thirdLevelActive]: true })}
+        className={cn(styles.thirdLevel, { [styles.thirdLevelActive]: false })}
       >
         {p.category}
       </a>
