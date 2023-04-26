@@ -5,6 +5,9 @@ import Tag from "@/components/Tag/Tag";
 import Card from "@/components/Card/Card";
 import Hhdata from "@/components/Hhdata/Hhdata";
 import { TopLevelCategory } from "../../interfaces/page.interface";
+import Advantages from "@/components/Advantages/Advantages";
+import pages from "@/pages";
+import Ptag from "@/components/Ptag/Ptag";
 
 export default function TopPageComponent({
   page,
@@ -36,9 +39,25 @@ export default function TopPageComponent({
         )}
       </div>
 
-      {firstCategory === TopLevelCategory.Courses && (
+      {firstCategory === TopLevelCategory.Courses && page.hh && (
         <Hhdata {...page.hh}></Hhdata>
       )}
+
+      {page.advantages && page.advantages.length > 0 && (
+        <>
+          <Htag tag="h2">Преимущества</Htag>
+          <Advantages advantages={page.advantages} />
+        </>
+      )}
+
+      {page.seoText && <Ptag>{page.seoText}</Ptag>}
+
+      <Htag tag="h2">Получаемые навыки</Htag>
+      {page.tags.map((t) => (
+        <Tag key={t} size="s" color="accent">
+          {t}
+        </Tag>
+      ))}
     </div>
   );
 }
