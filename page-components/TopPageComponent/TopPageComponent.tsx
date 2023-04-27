@@ -50,11 +50,16 @@ export default function TopPageComponent({
         </>
       )}
 
-      {page.seoText && <Ptag>{page.seoText}</Ptag>}
+      {page.seoText && (
+        <div
+          className={styles.seo}
+          dangerouslySetInnerHTML={{ __html: page.seoText }}
+        />
+      )}
 
       <Htag tag="h2">Получаемые навыки</Htag>
       {page.tags.map((t) => (
-        <Tag key={t} size="s" color="accent">
+        <Tag key={t} color="accent">
           {t}
         </Tag>
       ))}
