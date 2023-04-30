@@ -8,6 +8,8 @@ import { TopLevelCategory } from "../../interfaces/page.interface";
 import Advantages from "@/components/Advantages/Advantages";
 import pages from "@/pages";
 import Ptag from "@/components/Ptag/Ptag";
+import Sort from "@/components/Sort/Sort";
+import { SortEnum } from "@/components/Sort/Sort.props";
 
 export default function TopPageComponent({
   page,
@@ -23,7 +25,7 @@ export default function TopPageComponent({
             {products.length}
           </Tag>
         )}
-        <span>Sorting</span>
+        <Sort sort={SortEnum.Rating} setSort={() => {}} />
       </div>
 
       <div>
