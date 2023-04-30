@@ -12,6 +12,7 @@ import { withLayout } from "../../layout/Layout";
 import { MenuItem } from "../../interfaces/menu.interface";
 import axios from "axios";
 import Input from "@/components/Input/Input";
+import Textarea from "@/components/Textarea/Textarea";
 
 const notosans = Noto_Sans({ weight: "300", subsets: ["latin"] });
 
@@ -37,6 +38,7 @@ function Home({ menu, firstCategory }: HomeProps): JSX.Element {
           Stop
         </Button>
         <Input placeholder="test" />
+        <Textarea placeholder="textarea" />
         <Ptag size="s">
           У нашому житті є багато речей, які можуть привести нас у пастку, і
           яких ми не можемо уникнути, але Ісус прийшов на цю землю, щоб
