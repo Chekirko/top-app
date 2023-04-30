@@ -11,6 +11,7 @@ import { useState } from "react";
 import { withLayout } from "../../layout/Layout";
 import { MenuItem } from "../../interfaces/menu.interface";
 import axios from "axios";
+import Input from "@/components/Input/Input";
 
 const notosans = Noto_Sans({ weight: "300", subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ function Home({ menu, firstCategory }: HomeProps): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <div className={notosans.className}>
         <Htag tag="h1">Мій заголовок</Htag>
         <Htag tag="h3">Мій заголовок</Htag>
@@ -34,6 +36,7 @@ function Home({ menu, firstCategory }: HomeProps): JSX.Element {
         <Button appearance="ghost" arrow="right">
           Stop
         </Button>
+        <Input placeholder="test" />
         <Ptag size="s">
           У нашому житті є багато речей, які можуть привести нас у пастку, і
           яких ми не можемо уникнути, але Ісус прийшов на цю землю, щоб
@@ -117,6 +120,8 @@ function Home({ menu, firstCategory }: HomeProps): JSX.Element {
         <Tag size="m" color="grey">
           Large grey
         </Tag>
+
+        <Input />
         {menu.map((item) => (
           <div key={item._id.secondCategory}>{item._id.secondCategory}</div>
         ))}
