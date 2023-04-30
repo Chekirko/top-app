@@ -10,12 +10,26 @@ import pages from "@/pages";
 import Ptag from "@/components/Ptag/Ptag";
 import Sort from "@/components/Sort/Sort";
 import { SortEnum } from "@/components/Sort/Sort.props";
+import { useReducer } from "react";
+import { sortReducer } from "./sort.reducer";
 
 export default function TopPageComponent({
   page,
   products,
   firstCategory,
 }: TopPageProps): JSX.Element {
+  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(
+    sortReducer,
+    {
+      sort: SortEnum.Rating,
+      products,
+    }
+  );
+
+  const setSort = (sort: SortEnum) => {
+    dispatchSort({ type: sort });
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -25,11 +39,12 @@ export default function TopPageComponent({
             {products.length}
           </Tag>
         )}
-        <Sort sort={SortEnum.Rating} setSort={() => {}} />
+        <Sort sort={sort} setSort={setSort} />
       </div>
 
       <div>
-        {products && products.map((p) => <div key={p._id}>{p.title}</div>)}
+        {sortedProducts &&
+          sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
       </div>
 
       <div className={styles.hhTitle}>
