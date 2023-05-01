@@ -6,6 +6,7 @@ import cn from "classnames";
 export default function Ptag({
   size = "m",
   children,
+  className,
   ...props
 }: PtagProps): JSX.Element {
   return (
