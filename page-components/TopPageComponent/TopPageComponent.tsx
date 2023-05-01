@@ -12,6 +12,7 @@ import Sort from "@/components/Sort/Sort";
 import { SortEnum } from "@/components/Sort/Sort.props";
 import { useReducer } from "react";
 import { sortReducer } from "./sort.reducer";
+import Product from "@/components/Product/Product";
 
 export default function TopPageComponent({
   page,
@@ -44,7 +45,7 @@ export default function TopPageComponent({
 
       <div>
         {sortedProducts &&
-          sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
+          sortedProducts.map((p) => <Product key={p._id} product={p} />)}
       </div>
 
       <div className={styles.hhTitle}>

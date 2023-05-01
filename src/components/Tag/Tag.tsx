@@ -7,12 +7,13 @@ export default function Tag({
   size = "m",
   color,
   href,
+  className,
   children,
   ...props
 }: TagProps): JSX.Element {
   return (
     <div
-      className={cn(styles.tag, {
+      className={cn(className, styles.tag, {
         [styles.s]: size === "s",
         [styles.m]: size === "m",
         [styles.red]: color === "red",
