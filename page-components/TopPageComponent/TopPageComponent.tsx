@@ -10,7 +10,7 @@ import pages from "@/pages";
 import Ptag from "@/components/Ptag/Ptag";
 import Sort from "@/components/Sort/Sort";
 import { SortEnum } from "@/components/Sort/Sort.props";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { sortReducer } from "./sort.reducer";
 import Product from "@/components/Product/Product";
 
@@ -26,6 +26,10 @@ export default function TopPageComponent({
       products,
     }
   );
+
+  useEffect(() => {
+    dispatchSort({ type: "reset", initialState: products });
+  }, [products]);
 
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort });

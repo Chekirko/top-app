@@ -1,7 +1,11 @@
 import { SortEnum } from "@/components/Sort/Sort.props";
 import { ProductModel } from "../../interfaces/product.interface";
+import Product from "@/components/Product/Product";
 
-export type SortActions = { type: SortEnum.Rating } | { type: SortEnum.Price };
+export type SortActions =
+  | { type: SortEnum.Rating }
+  | { type: SortEnum.Price }
+  | { type: "reset"; initialState: ProductModel[] };
 
 export interface SortReducerState {
   sort: SortEnum;
@@ -24,6 +28,11 @@ export const sortReducer = (
       return {
         sort: SortEnum.Price,
         products: state.products.sort((a, b) => (a.price > b.price ? 1 : -1)),
+      };
+    case "reset":
+      return {
+        sort: SortEnum.Rating,
+        products: action.initialState,
       };
     default:
       throw new Error("Неверный тип сортировки");
