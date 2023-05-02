@@ -21,8 +21,8 @@ export default function Product({
         <Image
           src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
           alt={product.title}
-          width="70"
-          height="70"
+          width={70}
+          height={70}
           className={styles.img}
         />
       </div>
@@ -76,7 +76,7 @@ export default function Product({
           </div>
         )}
       </div>
-      <Divider className={styles.hr} />
+      <Divider className={cn(styles.hr, styles.hr2)} />
       <div className={styles.actions}>
         <Button appearance="primary">Узнать подробнее</Button>
         <Button
