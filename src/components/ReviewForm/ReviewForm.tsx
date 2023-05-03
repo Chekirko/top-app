@@ -2,30 +2,57 @@ import React from "react";
 import { ReviewFormProps } from "./ReviewForm.props";
 import styles from "./ReviewForm.module.css";
 import cn from "classnames";
-import UserIcon from "./user.svg";
-import { format } from "date-fns";
-import { ru } from "date-fns/locale";
 import Rating from "../Rating/Rating";
 import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
 import Button from "../Button/Button";
 import CloseIcon from "./close.svg";
+import { useForm, Controller } from "react-hook-form";
+import { IReviewForm } from "./ReviewForm.interface";
 
 export default function ReviewForm({
   productId,
   className,
   ...props
 }: ReviewFormProps): JSX.Element {
+  const { register, control, handleSubmit } = useForm<IReviewForm>();
+
+  const onSubmit = handleSubmit((data: IReviewForm) => console.log(data));
   return (
-    <>
+    <form onSubmit={onSubmit}>
       <div className={cn(className, styles.reviewForm)} {...props}>
-        <Input placeholder="Имя" className={styles.name} />
-        <Input placeholder="Заголовок отзыва" className={styles.title} />
+        <Input
+          {...register("name")}
+          placeholder="Имя"
+          type="text"
+          className={styles.name}
+        />
+        <Input
+          {...register("title")}
+          type="text"
+          placeholder="Заголовок отзыва"
+          className={styles.title}
+        />
         <div className={styles.rating}>
           <span>Оценка:</span>
-          <Rating rating={0} />
+          <Controller
+            control={control}
+            name="rating"
+            render={({ field }) => (
+              <Rating
+                isEditable
+                ref={field.ref}
+                rating={field.value}
+                setRating={field.onChange}
+              />
+            )}
+          />
         </div>
-        <Textarea placeholder="Текст отзыва" className={styles.description} />
+        <Textarea
+          {...register("description")}
+          placeholder="Текст отзыва"
+          className={styles.description}
+        />
         <div className={styles.submit}>
           <Button appearance={"primary"}>Отправить</Button>
           <span className={styles.info}>
@@ -39,6 +66,6 @@ export default function ReviewForm({
         <div>Спасибо, ваш отзыв будет опубликован после проверки.</div>
         <CloseIcon className={styles.close} />
       </div>
-    </>
+    </form>
   );
 }
