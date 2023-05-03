@@ -10,6 +10,7 @@ import Button from "../Button/Button";
 import { priceRu } from "../../../helpers/helpers";
 import Divider from "../Divider/Divider";
 import Review from "../Review/Review";
+import ReviewForm from "../ReviewForm/ReviewForm";
 
 export default function Product({
   product,
@@ -102,8 +103,12 @@ export default function Product({
         })}
       >
         {product.reviews.map((r) => (
-          <Review key={r._id} review={r} />
+          <div key={r._id}>
+            <Review review={r} />
+            <Divider />
+          </div>
         ))}
+        <ReviewForm productId={product._id} />
       </Card>
     </>
   );
