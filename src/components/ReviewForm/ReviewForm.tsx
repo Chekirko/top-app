@@ -15,20 +15,31 @@ export default function ReviewForm({
   className,
   ...props
 }: ReviewFormProps): JSX.Element {
-  const { register, control, handleSubmit } = useForm<IReviewForm>();
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IReviewForm>();
 
   const onSubmit = handleSubmit((data: IReviewForm) => console.log(data));
   return (
     <form onSubmit={onSubmit}>
       <div className={cn(className, styles.reviewForm)} {...props}>
         <Input
-          {...register("name")}
+          {...register("name", {
+            required: { value: true, message: "Заполните имя" },
+          })}
+          error={errors.name}
           placeholder="Имя"
           type="text"
           className={styles.name}
         />
         <Input
-          {...register("title")}
+          {...register("title", {
+            required: { value: true, message: "Заполните заголовок" },
+          })}
+          error={errors.title}
           type="text"
           placeholder="Заголовок отзыва"
           className={styles.title}
@@ -38,9 +49,13 @@ export default function ReviewForm({
           <Controller
             control={control}
             name="rating"
+            rules={{
+              required: { value: true, message: "Укажите оценку" },
+            }}
             render={({ field }) => (
               <Rating
                 isEditable
+                error={errors.rating}
                 ref={field.ref}
                 rating={field.value}
                 setRating={field.onChange}
@@ -49,8 +64,11 @@ export default function ReviewForm({
           />
         </div>
         <Textarea
-          {...register("description")}
+          {...register("description", {
+            required: { value: true, message: "Введите текст отзыва" },
+          })}
           placeholder="Текст отзыва"
+          error={errors.description}
           className={styles.description}
         />
         <div className={styles.submit}>
