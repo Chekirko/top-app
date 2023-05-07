@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { ProductProps } from "./Product.props";
 import styles from "./Product.module.css";
@@ -19,8 +19,18 @@ export default function Product({
 }: ProductProps): JSX.Element {
   const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
 
+  const formCardRef = useRef<HTMLDivElement>(null);
+
+  const scrollToReview = () => {
+    setIsReviewOpened(true);
+    formCardRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
-    <>
+    <div className={className} {...props}>
       <Card className={styles.product}>
         <div className={styles.logo}>
           <Image
@@ -55,7 +65,11 @@ export default function Product({
         </div>
         <div className={styles.priceTitle}>цена</div>
         <div className={styles.creditTitle}>кредит</div>
-        <div className={styles.rateTitle}>{product.reviewCount} отзывов</div>
+        <div className={styles.rateTitle}>
+          <a href="#ref" onClick={scrollToReview}>
+            {product.reviewCount} отзывов
+          </a>
+        </div>
         <Divider className={styles.hr} />
         <div className={styles.description}>{product.description}</div>
         <div className={styles.feature}>
@@ -101,6 +115,7 @@ export default function Product({
           [styles.opened]: isReviewOpened,
           [styles.closed]: !isReviewOpened,
         })}
+        ref={formCardRef}
       >
         {product.reviews.map((r) => (
           <div key={r._id}>
@@ -110,6 +125,6 @@ export default function Product({
         ))}
         <ReviewForm productId={product._id} />
       </Card>
-    </>
+    </div>
   );
 }
