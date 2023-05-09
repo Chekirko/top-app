@@ -6,7 +6,7 @@ import Header from "./Header/Header";
 import Sidebar from "./Sidebar/Sidebar";
 import Footer from "./Footer/Footer";
 import { AppContextProvider, IAppContext } from "../context/app.context";
-import Up from "@/components/Up/Up";
+import UpButton from "@/components/UpButton/UpButton";
 
 function Layout({ children }: LayoutProps): JSX.Element {
   return (
@@ -15,7 +15,7 @@ function Layout({ children }: LayoutProps): JSX.Element {
       <Sidebar className={styles.sidebar} />
       <div className={styles.body}>{children}</div>
       <Footer className={styles.footer} />
-      <Up />
+      <UpButton />
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import styles from "./Up.module.css";
-import UpIcon from "./up.svg";
+import styles from "./UpButton.module.css";
+import UpIcon from "./upButton.svg";
 import cn from "classnames";
 import { useScrollY } from "../../../hooks/useScrollY";
 import { motion, useAnimation } from "framer-motion";
 
-export default function Up(): JSX.Element {
+export default function UpButton(): JSX.Element {
   const controls = useAnimation();
   const scrollY = useScrollY();
 
