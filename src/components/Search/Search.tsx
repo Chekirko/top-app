@@ -40,7 +40,7 @@ export default function Search({
       />
       <Button
         appearance="primary"
-        className={styles.button}
+        className={styles.searchButton}
         onClick={goToSearch}
       >
         <GlassIcon />
