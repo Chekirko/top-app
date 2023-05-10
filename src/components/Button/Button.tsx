@@ -3,6 +3,7 @@ import styles from "./Button.module.css";
 import { ButtonProps } from "./Button.props";
 import cn from "classnames";
 import ArrowIcon from "./arrow.svg";
+import { motion } from "framer-motion";
 
 export default function Button({
   appearance,
@@ -12,12 +13,17 @@ export default function Button({
   ...props
 }: ButtonProps): JSX.Element {
   return (
-    <button
+    <motion.button
       className={cn(className, styles.button, {
         [styles.primary]: appearance === "primary",
         [styles.ghost]: appearance === "ghost",
       })}
       {...props}
+      whileHover={{
+        scale: 1.05,
+        transition: { duration: 1 },
+      }}
+      whileTap={{ scale: 0.9 }}
     >
       {children}
       {arrow !== "none" && (
@@ -29,6 +35,6 @@ export default function Button({
           <ArrowIcon />
         </span>
       )}
-    </button>
+    </motion.button>
   );
 }
