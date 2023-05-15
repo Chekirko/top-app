@@ -39,6 +39,7 @@ const ProductWithRef = motion(
         behavior: "smooth",
         block: "start",
       });
+      formCardRef.current?.focus();
     };
 
     return (
@@ -126,7 +127,12 @@ const ProductWithRef = motion(
           variants={variants}
           initial="hidden"
         >
-          <Card color="blue" className={styles.reviews} ref={formCardRef}>
+          <Card
+            color="blue"
+            className={styles.reviews}
+            ref={formCardRef}
+            tabIndex={0}
+          >
             {product.reviews.map((r) => (
               <div key={r._id}>
                 <Review review={r} />
