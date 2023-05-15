@@ -10,6 +10,21 @@
         "footer footer footer footer";
 }
 
+.skipLink {
+    display: block;
+    position: fixed;
+    left: 100px;
+    overflow: hidden;
+    height: 0;    
+
+    background: var(--accent);
+    color: var(--white)
+}
+
+.displayed {
+    height: auto;
+}
+
 .header {
     grid-area: header;
 }
@@ -20,6 +35,7 @@
 
 .body {
     grid-area: body;
+    outline: none;
 }
 
 .footer {
