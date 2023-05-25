@@ -13,6 +13,7 @@ import axios from "axios";
 import { API } from "../../../helpers/api";
 
 export default function ReviewForm({
+  isOpened,
   productId,
   className,
   ...props
@@ -60,6 +61,7 @@ export default function ReviewForm({
           placeholder="Имя"
           type="text"
           className={styles.name}
+          tabIndex={isOpened ? 0 : -1}
         />
         <Input
           {...register("title", {
@@ -69,6 +71,7 @@ export default function ReviewForm({
           type="text"
           placeholder="Заголовок отзыва"
           className={styles.title}
+          tabIndex={isOpened ? 0 : -1}
         />
         <div className={styles.rating}>
           <span>Оценка:</span>
@@ -85,6 +88,7 @@ export default function ReviewForm({
                 ref={field.ref}
                 rating={field.value}
                 setRating={field.onChange}
+                tabIndex={isOpened ? 0 : -1}
               />
             )}
           />
@@ -96,9 +100,12 @@ export default function ReviewForm({
           placeholder="Текст отзыва"
           error={errors.description}
           className={styles.description}
+          tabIndex={isOpened ? 0 : -1}
         />
         <div className={styles.submit}>
-          <Button appearance={"primary"}>Отправить</Button>
+          <Button appearance={"primary"} tabIndex={isOpened ? 0 : -1}>
+            Отправить
+          </Button>
           <span className={styles.info}>
             * Перед публикацией отзыв пройдет предварительную модерацию и
             проверку
