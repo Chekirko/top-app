@@ -7,7 +7,7 @@ import Card from "../Card/Card";
 import Rating from "../Rating/Rating";
 import Tag from "../Tag/Tag";
 import Button from "../Button/Button";
-import { priceRu } from "../../../helpers/helpers";
+import { declOfNum, priceRu } from "../../../helpers/helpers";
 import Divider from "../Divider/Divider";
 import Review from "../Review/Review";
 import ReviewForm from "../ReviewForm/ReviewForm";
@@ -80,7 +80,8 @@ const ProductWithRef = motion(
           <div className={styles.creditTitle}>кредит</div>
           <div className={styles.rateTitle}>
             <a href="#ref" onClick={scrollToReview}>
-              {product.reviewCount} отзывов
+              {product.reviewCount}{" "}
+              {declOfNum(product.reviewCount, ["отзыв", "отзыва", "отзывов"])}
             </a>
           </div>
           <Divider className={styles.hr} />
