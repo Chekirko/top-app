@@ -11,37 +11,6 @@ function Type({ menu, firstCategory }: TypeProps): JSX.Element {
   return (
     <>
       <h1>FirstCategory: {firstCategory}</h1>
-      <Tag size="m" color="red">
-        Large red
-      </Tag>
-      <Tag size="m" color="green">
-        Large green
-      </Tag>
-      <Tag size="m" color="ghost">
-        Large ghost
-      </Tag>
-      <Tag size="m" color="accent">
-        Large accent
-      </Tag>
-      <Tag size="m" color="grey">
-        Large grey
-      </Tag>
-      <h1>Привіт, Боженка!</h1>
-      <Tag size="m" color="red">
-        Large red
-      </Tag>
-      <Tag size="m" color="green">
-        Large green
-      </Tag>
-      <Tag size="m" color="ghost">
-        Large ghost
-      </Tag>
-      <Tag size="m" color="accent">
-        Large accent
-      </Tag>
-      <Tag size="m" color="grey">
-        Large grey
-      </Tag>
     </>
   );
 }
