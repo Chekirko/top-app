@@ -19,18 +19,22 @@ const notosans = Noto_Sans({ weight: "300", subsets: ["latin"] });
 function TopPage({ page, products, firstCategory }: TopPageProps): JSX.Element {
   return (
     <>
-      <Head>
-        <title>{page.metaTitle}</title>
-        <meta name="description" content={page.metaDescription} />
-        <meta property="og:title" content={page.metaTitle} />
-        <meta property="og:description" content={page.metaDescription} />
-        <meta property="og:type" content="article" />;
-      </Head>
-      <TopPageComponent
-        page={page}
-        products={products}
-        firstCategory={firstCategory}
-      ></TopPageComponent>
+      {page && products && (
+        <>
+          <Head>
+            <title>{page.metaTitle}</title>
+            <meta name="description" content={page.metaDescription} />
+            <meta property="og:title" content={page.metaTitle} />
+            <meta property="og:description" content={page.metaDescription} />
+            <meta property="og:type" content="article" />;
+          </Head>
+          <TopPageComponent
+            page={page}
+            products={products}
+            firstCategory={firstCategory}
+          ></TopPageComponent>
+        </>
+      )}
     </>
   );
 }
